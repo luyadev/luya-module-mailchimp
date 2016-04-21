@@ -47,7 +47,7 @@ In the above example 'E-Mail' or 'Firstname' would look like this `Yii::t('app',
 
 #### View Files
 
-Create two view files in your module name directory in your views folder: ```_mail.php``` and ``ìndex.php```
+Create two view files in your module name directory in your views folder: `_mail.php` and `index.php`
 
 ##_mail.php##
 
