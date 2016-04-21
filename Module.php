@@ -131,9 +131,6 @@ class Module extends \admin\base\Module
         if ($this->listId === null) {
             throw new Exception("The MailChimp list Id must be defined.");
         }
-        if ($this->recipients === null) {
-            throw new Exception("The recipients attributed must be defined with an array of recipients who will recieve an email.");
-        }
 
         if ($this->mailchimpApi === null) {
             throw new Exception("The MailChimp API key must be defined.");

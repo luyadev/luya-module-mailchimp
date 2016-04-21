@@ -63,21 +63,24 @@ class DefaultController extends \luya\web\Controller
 
             if (empty($error)) {
                 // send admin success mail
-                $mail = Yii::$app->mail->compose('['.Yii::$app->siteTitle.'] newsletter registration', $this->renderPartial('_mail', ['model' => $model]));
-                $mail->adresses($this->module->recipients);
+                if ($this->module->recipients !== null) {
+                    $mail = Yii::$app->mail->compose('['.Yii::$app->siteTitle.'] newsletter registration', $this->renderPartial('_mail', ['model' => $model]));
+                    $mail->adresses($this->module->recipients);
 
-                if ($mail->send()) {
-                    $this->success = true;
-                    Yii::$app->session->setFlash('contactform_success');
+                    if ($mail->send()) {
+                        $this->success = true;
 
-                    // callback
-                    $cb = $this->module->callback;
-                    if (is_callable($cb)) {
-                        $cb($model);
+                        // callback
+                        $cb = $this->module->callback;
+                        if (is_callable($cb)) {
+                            $cb($model);
+                        }
+
+                    } else {
+                        $this->success = false;
                     }
-
                 } else {
-                    $this->success = false;
+                    $this->success = true;
                 }
             }
         }
