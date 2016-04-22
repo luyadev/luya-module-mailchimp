@@ -17,6 +17,23 @@ class DefaultController extends \luya\web\Controller
 
     const ERROR_EMAIL_ALREADY_SUBSCRIBED = 214;
 
+
+    /**
+     * @param $model
+     * @param $alias name of the mailchimp group in our dynamic model
+     * @return array|null return the included elements as a list
+     */
+    private function getGroupAttributes($model, $alias)
+    {
+        $returnArray = null;
+        if (isset($model->{$alias}) && is_array($model->{$alias})) {
+            foreach ($model->{$alias} as $element) {
+                $returnArray[] = $element;
+            }
+        }
+        return $returnArray;
+    }
+
     /**
      * Index Action
      *
@@ -53,10 +70,18 @@ class DefaultController extends \luya\web\Controller
                 }
             }
 
+            // add interest groups
+            foreach ($this->module->groups as $group) {
+                $merge_vars['groupings'] = [
+                    [
+                        'id' => $group['id'],
+                        'groups' => $this->getGroupAttributes($model, $group['alias'])
+                    ]
+                ];
+            }
+
             try {
-                $result = $mailchimp->lists->subscribe($this->module->listId, array('email' => $model->email),
-                    $merge_vars,
-                    false, false, false, false);
+                $mailchimp->lists->subscribe($this->module->listId, array('email' => $model->email), $merge_vars, false, false, false, false);
             } catch(\Mailchimp_Error $e) {
                 $error = $e;
             }
@@ -86,7 +111,17 @@ class DefaultController extends \luya\web\Controller
         }
 
         Yii::$app->session->set('renderTime', time());
-
+/*
+        // compile groups
+        $groups = null;
+        foreach ($this->module->groups as $group) {
+            
+            foreach ($group->array as $element) {
+                $groups
+            }
+        }
+        */
+        
         return $this->render('index', [
             'model' => $model,
             "error" => $error,

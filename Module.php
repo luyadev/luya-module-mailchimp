@@ -121,6 +121,20 @@ class Module extends \admin\base\Module
     public $attributeLabels = [];
 
     /**
+     * @var array Group fields defined in your mailchimp list. Contains an array with an alias for model validation, the id for mailchimp API submit. The included fields will be defined in your form view.
+     * 
+     * ```
+     * 'groups' => [
+     *  [
+     *   'alias' => 'language',
+     *   'id' => '2809',
+     *  ],
+     * ],
+     * ```
+     */
+    public $groups = [];
+    
+    /**
      * {@inheritDoc}
      * @see \luya\base\Module::init()
      */
