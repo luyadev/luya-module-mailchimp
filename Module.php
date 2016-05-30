@@ -38,7 +38,7 @@ use Yii;
  * @author martinpetrasch
  * @since 1.0.0-beta6
  */
-class Module extends \admin\base\Module
+class Module extends \luya\base\Module
 {
     /**
      * error code list: https://apidocs.mailchimp.com/api/1.3/exceptions.field.php
