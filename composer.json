@@ -1,6 +1,6 @@
 {
   "name" : "luyadev/luya-module-mailchimp",
-  "description" : "LUYA MailChimp Form Registration",
+  "description" : "This module provides a simple way to build your own form for a user registration in a MailChimp newsletter.",
   "type" : "luya-module",
   "keywords" : ["php", "luya", "module", "cms", "yii2", "yii", "mailchimp", "form", "registration", "newsletter", "luya-module"],
   "license": "MIT",
