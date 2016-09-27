@@ -125,5 +125,5 @@ Add a new module page and choose your configured mailchimp-module-name. In the c
 
 ### Something isn't working as expected
 
-You can check the API calls to your account in mailchimp with the given responds on [the same page where you get your API key](http://kb.mailchimp.com/integrations/api-integrations/about-api-keys). Just scroll to the bottom.
+You can check the API calls to your account in mailchimp account with the given responds on [the same page where you get your API key](http://kb.mailchimp.com/integrations/api-integrations/about-api-keys). Just scroll to the bottom.
 
