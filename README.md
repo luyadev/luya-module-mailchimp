@@ -51,7 +51,8 @@ By default LUYA will wrap the value into the `Yii::t('app', $value)` functions s
 In the above example 'E-Mail' or 'Firstname' would look like this `Yii::t('app', 'E-Mail')` and `Yii::t('app', 'Firstname')`.
 Enter your API key in *mailchimpAPI*, your list id in *listid* and all list fields in *attributes*, *rules* and *attributeLabels*.
 
-#### View Files
+View Files
+---
 
 Create two view files in your module name directory in your views folder: `_mail.php` and `index.php`
 
