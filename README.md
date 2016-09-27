@@ -49,7 +49,8 @@ add the mailchimp form module to your config:
 
 By default LUYA will wrap the value into the `Yii::t('app', $value)` functions so you are able to translate the attributes labels.
 In the above example 'E-Mail' or 'Firstname' would look like this `Yii::t('app', 'E-Mail')` and `Yii::t('app', 'Firstname')`.
-Enter your API key in *mailchimpAPI*, your list id in *listid* and all list fields in *attributes*, *rules* and *attributeLabels*.
+
+Enter your API key in *mailchimpAPI*, your list id in *listid* and all list fields in *attributes*, *rules* and *attributeLabels*. As you can see your list field names in mailchimp will be used as model attributes which then can be validated via [Yii rules](http://www.yiiframework.com/doc-2.0/guide-input-validation.html) defined in *rules*.
 
 View Files
 ---
