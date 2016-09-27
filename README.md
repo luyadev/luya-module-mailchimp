@@ -3,6 +3,11 @@ LUYA MAILCHIMP REGISTRATION FORM MODULE
 
 This module provides a simple way to build your own form for a user registration in a MailChimp newsletter.
 
+Preparation
+---
+
+Before you install and configure the module you've to setup you Mailchimp account. After a successful registration, create a [new mailing list](http://kb.mailchimp.com/lists/growth/create-a-new-list) and [add you list fields](http://kb.mailchimp.com/lists/managing-subscribers/manage-list-and-signup-form-fields). It's recommended to add them directly under *Settings > List fields and *|MERGE|* tags* in your list view. After you've setup your mailing list, extract the [list id](http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id) and note all you list field names. Additionally you'll need to [get your API key for your account](http://kb.mailchimp.com/integrations/api-integrations/about-api-keys). With this informations you're ready to setup the mailchimp luya module.
+
 Installation
 ----
 
@@ -21,19 +26,19 @@ add the mailchimp form module to your config:
         'class' => 'mailchimp\Module',
         'listId' => 'MailChimp-List-ID',
         'attributes' => [
-            'email', 'FIRSTNAME', 'LASTNAME', 'STREET', 'ZIP_CITY', 'COUNTRY'
+            'email', 'firstname', 'lastname', 'street', 'zip_city', 'country'
         ],
         'rules' => [
-            [['email', 'FIRSTNAME', 'LASTNAME', 'ZIP_CITY', 'COUNTRY'], 'required'],
+            [['email', 'firstname', 'lastname', 'zip_city', 'country'], 'required'],
             ['email', 'email'],
         ],
         'attributeLabels' => [
             'email' => 'E-Mail',
-            'FIRSTNAME' => 'Firstname',
-            'LASTNAME' => 'Lastname',
-            'STREET' => 'Street',
-            'ZIP_CITY' => 'Zip/City',
-            'COUNTRY' => 'Country',
+            'firstname' => 'Firstname',
+            'lastname' => 'Lastname',
+            'street' => 'Street',
+            'zip_city' => 'Zip/City',
+            'country' => 'Country',
         ],
         'recipients' => [
             'registration-confirm@host.ip',
@@ -44,6 +49,7 @@ add the mailchimp form module to your config:
 
 By default LUYA will wrap the value into the `Yii::t('app', $value)` functions so you are able to translate the attributes labels.
 In the above example 'E-Mail' or 'Firstname' would look like this `Yii::t('app', 'E-Mail')` and `Yii::t('app', 'Firstname')`.
+Enter your API key in *mailchimpAPI*, your list id in *listid* and all list fields in *attributes*, *rules* and *attributeLabels*.
 
 #### View Files
 
@@ -112,3 +118,11 @@ use yii\helpers\Html;
     <? ActiveForm::end(); ?>
 <? endif; ?>
 ```
+### Setup the module in Luya CMS
+
+Add a new module page and choose your configured mailchimp-module-name. In the config example above we used *newsletter-form*. Make sure the site is visible and online and you're ready to use the module to register users via your defined custom forms to your mailchimp newsletter list.
+
+### Something isn't working as expected
+
+You can check the API calls to your account in mailchimp with the given responds on [the same page where you get your API key](http://kb.mailchimp.com/integrations/api-integrations/about-api-keys). Just scroll to the bottom.
+
