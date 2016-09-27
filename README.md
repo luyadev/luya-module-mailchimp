@@ -56,7 +56,7 @@ View Files
 
 Create two view files in your module name directory in your views folder: `_mail.php` and `index.php`
 
-##_mail.php##
+### _mail.php ###
 
 Define your email confirmation admin mail in this view. If you've left `recipient` empty, no confirmation mail will be sent and you can skip the view definition.
 
@@ -71,7 +71,7 @@ Define your email confirmation admin mail in this view. If you've left `recipien
 </table>
 ```
 
-##index.php##
+### index.php ###
 
 Define your registration form in this view. It includes the success and error message output as well.
 The form fields have to be correspond to `attributes` definition:
