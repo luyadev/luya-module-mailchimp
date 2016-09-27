@@ -109,10 +109,10 @@ use yii\helpers\Html;
     <? $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'email'); ?>
-    <?= $form->field($model, 'FIRSTNAME'); ?>
-    <?= $form->field($model, 'LASTNAME'); ?>
-    <?= $form->field($model, 'ZIP_CITY'); ?>
-    <?= $form->field($model, 'COUNTRY'); ?>
+    <?= $form->field($model, 'firname'); ?>
+    <?= $form->field($model, 'lastname'); ?>
+    <?= $form->field($model, 'zip_city'); ?>
+    <?= $form->field($model, 'country'); ?>
 
     <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
 
