@@ -6,7 +6,7 @@ This module provides a simple way to build your own form for a user registration
 Preparation
 ---
 
-Before you install and configure the module you've to setup you Mailchimp account. After a successful registration, create a [new mailing list](http://kb.mailchimp.com/lists/growth/create-a-new-list) and [add you list fields](http://kb.mailchimp.com/lists/managing-subscribers/manage-list-and-signup-form-fields). It's recommended to add them directly under *Settings > List fields and *|MERGE|* tags* in your list view. After you've setup your mailing list, extract the [list id](http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id) and note all you list field names. Additionally you'll need to [get your API key for your account](http://kb.mailchimp.com/integrations/api-integrations/about-api-keys). With this informations you're ready to setup the mailchimp luya module.
+Before you install and configure the module you've to setup you Mailchimp account. After a successful registration, create a [new mailing list](http://kb.mailchimp.com/lists/growth/create-a-new-list) and [add you list fields](http://kb.mailchimp.com/lists/managing-subscribers/manage-list-and-signup-form-fields). It's recommended to add them directly under *Settings > List fields and *|MERGE|* tags* in your list view. After you've setup your mailing list, extract the [list id](http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id) and note all your list field names. Additionally you'll need to [get your API key for your account](http://kb.mailchimp.com/integrations/api-integrations/about-api-keys). With this informations you're ready to setup the mailchimp luya module.
 
 Installation
 ----
