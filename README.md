@@ -109,7 +109,7 @@ use yii\helpers\Html;
     <? $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'email'); ?>
-    <?= $form->field($model, 'firname'); ?>
+    <?= $form->field($model, 'firstname'); ?>
     <?= $form->field($model, 'lastname'); ?>
     <?= $form->field($model, 'zip_city'); ?>
     <?= $form->field($model, 'country'); ?>
