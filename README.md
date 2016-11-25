@@ -61,8 +61,7 @@ Create two view files in your module name directory in your views folder: `_mail
 
 Define your email confirmation admin mail in this view. If you've left `recipient` empty, no confirmation mail will be sent and you can skip the view definition.
 
-```
-<?php?>
+```php
 <h2><?= Yii::$app->siteTitle;?> Newsletter registration</h2>
 <p>Date: <?= date("d.m.Y H:i"); ?></p>
 <table border="0" cellpadding="5" cellspacing="2" width="100%">
