@@ -1,6 +1,8 @@
 LUYA MAILCHIMP REGISTRATION FORM MODULE
 =======================================
 
+[![LUYA](https://img.shields.io/badge/Powered%20by-LUYA-brightgreen.svg)](https://luya.io)
+
 This module provides a simple way to build your own form for a user registration in a MailChimp newsletter.
 
 Preparation
