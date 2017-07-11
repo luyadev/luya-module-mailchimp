@@ -1,6 +1,6 @@
 <?php
 
-namespace mailchimp;
+namespace luya\mailchimp;
 
 use luya\Exception;
 use Yii;
@@ -62,25 +62,25 @@ class Module extends \luya\base\Module
      * }
      * ```
      */
-    public $callback = null;
+    public $callback;
 
     /**
      *
      * @var array An array with all recipients the mail should be sent on success, recipients will be assigned via
      * [[\luya\components\Mail::adresses()|adresses()]] method of the mailer function.
      */
-    public $recipients = null;
+    public $recipients;
 
     /**
      * @var int Number in seconds, if the process time is faster then `$spamDetectionDelay`, the mail will threated as spam
      * and throws an exception. As humans requires at least more then 2 seconds to fillup a form we use this as base value.
      */
-    public $spamDetectionDelay = 0;
+    public $spamDetectionDelay = 2;
 
     /**
      * @var string MailChimp API key. You'll find more info how to make or retrieve an API key here: http://kb.mailchimp.com/accounts/management/about-api-keys
      */
-    public $mailchimpApi = null;
+    public $mailchimpApi;
 
     /**
      * @var Number MailChimp newsletter list Id.
@@ -90,11 +90,16 @@ class Module extends \luya\base\Module
     /**
      * @var array An array containing all the attributes for this model
      *
-     * ```
+     * ```php
      * 'attributes' => ['name', 'email', 'street', 'city', 'tel', 'message'],
      * ```
      */
-    public $attributes = null;
+    public $attributes;
+
+    /**
+     * @var string Defines the name of the attribute in the model which containts the email adresse in order to make the mailchimp call and also to assign the errors.
+     */
+    public $attributeEmailField = 'email';
 
     /**
      * @var array An array define the rules for the corresponding attributes. Example rules:
@@ -112,7 +117,7 @@ class Module extends \luya\base\Module
      * @var array An array define the attribute labels for an attribute, internal the attribute label values
      * will be wrapped into the `Yii::t()` method.
      *
-     * ```
+     * ```php
      * 'attributeLabels' => [
      *     'email' => 'E-Mail-Adresse',
      * ],
@@ -122,8 +127,8 @@ class Module extends \luya\base\Module
 
     /**
      * @var array Group fields defined in your mailchimp list. Contains an array with an alias for model validation, the id for mailchimp API submit. The included fields will be defined in your form view.
-     * 
-     * ```
+     *
+     * ```php
      * 'groups' => [
      *  [
      *   'alias' => 'language',
@@ -133,41 +138,4 @@ class Module extends \luya\base\Module
      * ```
      */
     public $groups = [];
-    
-    /**
-     * {@inheritDoc}
-     * @see \luya\base\Module::init()
-     */
-    public function init()
-    {
-        parent::init();
-
-        if ($this->listId === null) {
-            throw new Exception("The MailChimp list Id must be defined.");
-        }
-
-        if ($this->mailchimpApi === null) {
-            throw new Exception("The MailChimp API key must be defined.");
-        }
-
-        if ($this->attributes === null) {
-            throw new Exception("The attributes attributed must be defined with an array of available attributes.");
-        }
-    }
-
-    public $translations = [
-        [
-            'prefix' => 'mailchimp*',
-            'basePath' => '@form1/messages',
-            'fileMap' => [
-                'mailchimp' => 'mailchimp.php',
-            ],
-        ],
-    ];
-
-    public static function t($message, array $params = [])
-    {
-        return Yii::t('mailchimp', $message, $params, Yii::$app->luyaLanguage);
-    }
-
 }
