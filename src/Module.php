@@ -41,11 +41,6 @@ use Yii;
 class Module extends \luya\base\Module
 {
     /**
-     * error code list: https://apidocs.mailchimp.com/api/1.3/exceptions.field.php
-     */
-    const ERROR_EMAIL_ALREADY_SUBSCRIBED = 214;
-
-    /**
      * @var boolean By default this module will lookup the view files in the appliation view folder instead of
      * the module base path views folder.
      */

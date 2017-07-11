@@ -103,10 +103,9 @@ class DefaultController extends Controller
                 ];
             }
 
-            try {
-                (new MailchimpHelper($this->module->mailchimpApi))->subscribe($this->module->listId, $model->{$this->module->attributeEmailField}, $merge_vars);
-            } catch (\Mailchimp_Error $e) {
-                $model->addError($this->module->attributeEmailField, $e->getMessage());
+            $mailchimp = new MailchimpHelper($this->module->mailchimpApi);
+            if (!$mailchimp->subscribe($this->module->listId, $model->{$this->module->attributeEmailField}, $merge_vars)) {
+                $model->addError($this->module->attributeEmailField, $mailchimp->errorMessage);
             }
             
             if (!$model->hasErrors()) {
