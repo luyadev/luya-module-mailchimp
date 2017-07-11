@@ -1,0 +1,6 @@
+<?php
+
+return [
+    'apiKey' => 'MYAPIKEY', // https://us16.admin.mailchimp.com/account/api/
+    'listId' => 'MYLISTID', // https://us16.admin.mailchimp.com/lists/
+];
