@@ -15,6 +15,13 @@ use yii\base\Object;
 class MailchimpHelper extends Object
 {
     /**
+     * @var array List of arrays an the translations (https://apidocs.mailchimp.com/api/1.3/exceptions.field.php)
+     */
+    protected $errors = [
+        214 => 'E-Mail is already subscribed to this list.',
+    ];
+    
+    /**
      * @var Mailchimp;
      */
     public $mailchimp;
@@ -54,12 +61,14 @@ class MailchimpHelper extends Object
     /**
      * Error Message Setter Method.
      * 
+     * If the given code is found inside the exception the message from the prepared error list is used instead of the exception message.
+     * 
      * @param \Exception $error
      * @return boolean
      */
     public function setErrorMessage(\Exception $error)
     {
-        $this->_errorMessage = $error->getMessage();
+        $this->_errorMessage = isset($this->errors[$error->getCode()]) ? $this->errors[$error->getCode()] : $error->getMessage();
         
         return false;
     }
