@@ -111,7 +111,7 @@ class DefaultController extends Controller
             if (!$model->hasErrors()) {
                 if ($this->module->recipients) {
                     $mail = Yii::$app->mail->compose('['.Yii::$app->siteTitle.'] newsletter registration', $this->renderPartial('_mail', ['model' => $model]));
-                    $mail->adresses($this->module->recipients);
+                    $mail->addresses($this->module->recipients);
                     if ($mail->send()) {
                         // callback
                         $cb = $this->module->callback;
