@@ -13,13 +13,13 @@ use luya\web\filters\RobotsFilter;
 
 class DefaultController extends Controller
 {
-	public function behaviors()
-	{
-		return [
-			'robotsFilter' => RobotsFilter::class,
-		];
-	}
-	
+    public function behaviors()
+    {
+        return [
+            'robotsFilter' => RobotsFilter::class,
+        ];
+    }
+    
     /**
      * Initializer
      * @todo use getter exception inside module attribute instead of initializer of controller.
@@ -59,7 +59,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * 
+     *
      * @throws InvalidConfigException
      * @return \luya\base\DynamicModel
      */

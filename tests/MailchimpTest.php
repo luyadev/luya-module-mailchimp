@@ -30,8 +30,8 @@ class MailchimpTest extends WebApplicationTestCase
     
     public function testModuleInstanceExceptionsFromController()
     {
-    	$this->expectException('luya\Exception');
-    	new DefaultController('default', $this->app->getModule('mailchimp'));
+        $this->expectException('luya\Exception');
+        new DefaultController('default', $this->app->getModule('mailchimp'));
     }
     
     public function testMailchimpHelper()
@@ -50,13 +50,13 @@ class MailchimpTest extends WebApplicationTestCase
 
     public function testRobotsSpamDelay()
     {
-    	$module = $this->app->getModule('mailchimp');
-    	$module->listId = '123';
-    	$module->mailchimpApi = '123';
-    	$module->attributes = ['foo' => 'bar'];
-    	
-    	$_SERVER['REQUEST_METHOD'] = 'post';
-    	$this->expectException('yii\base\InvalidCallException');
-    	(new DefaultController('default', $module))->runAction('index');
+        $module = $this->app->getModule('mailchimp');
+        $module->listId = '123';
+        $module->mailchimpApi = '123';
+        $module->attributes = ['foo' => 'bar'];
+        
+        $_SERVER['REQUEST_METHOD'] = 'post';
+        $this->expectException('yii\base\InvalidCallException');
+        (new DefaultController('default', $module))->runAction('index');
     }
 }

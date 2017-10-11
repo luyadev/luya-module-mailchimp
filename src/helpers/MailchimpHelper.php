@@ -7,9 +7,9 @@ use yii\base\Object;
 
 /**
  * Mailchimp Helper.
- * 
+ *
  * Usage of Mailchimp subscriptions without controllers, example:
- * 
+ *
  * ```php
  * $mailchimp = new MailchimpHelper('API_KEY');
  * if ($mailchimp->subsribe('LIST_ID', 'john@doe.com')) {
@@ -20,7 +20,7 @@ use yii\base\Object;
  * ```
  *
  * @property string $errorMessage Contains an error messsage when an api call was false.
- * 
+ *
  * @author Basil Suter <basil@nadar.io>
  * @since 1.0.1
  */
@@ -52,7 +52,7 @@ class MailchimpHelper extends Object
     
     /**
      * Subscribe an email adresse to a given list.
-     * 
+     *
      * @param string $listId
      * @param string $email
      * @param array $mergedVars
@@ -72,9 +72,9 @@ class MailchimpHelper extends Object
     
     /**
      * Error Message Setter Method.
-     * 
+     *
      * If the given code is found inside the exception the message from the prepared error list is used instead of the exception message.
-     * 
+     *
      * @param \Exception $error
      * @return boolean
      */
@@ -87,7 +87,7 @@ class MailchimpHelper extends Object
     
     /**
      * Error Message Getter Method.
-     * 
+     *
      * @return string
      */
     public function getErrorMessage()
