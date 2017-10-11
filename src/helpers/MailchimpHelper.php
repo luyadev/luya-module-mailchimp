@@ -6,11 +6,23 @@ use Mailchimp;
 use yii\base\Object;
 
 /**
- * Helper Methods.
+ * Mailchimp Helper.
+ * 
+ * Usage of Mailchimp subscriptions without controllers, example:
+ * 
+ * ```php
+ * $mailchimp = new MailchimpHelper('API_KEY');
+ * if ($mailchimp->subsribe('LIST_ID', 'john@doe.com')) {
+ *     echo  "Subscription complet!";
+ * } else {
+ *     echo "Error:" . $mailchimp->errorMessage;
+ * }
+ * ```
  *
- * @property string $errorMessage  Contains an error messsage when an api call was false.
+ * @property string $errorMessage Contains an error messsage when an api call was false.
  * 
  * @author Basil Suter <basil@nadar.io>
+ * @since 1.0.1
  */
 class MailchimpHelper extends Object
 {
