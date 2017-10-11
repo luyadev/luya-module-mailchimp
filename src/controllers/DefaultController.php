@@ -9,9 +9,17 @@ use luya\Exception;
 use luya\web\Controller;
 use \Mailchimp;
 use luya\mailchimp\helpers\MailchimpHelper;
+use luya\web\filters\RobotsFilter;
 
 class DefaultController extends Controller
 {
+	public function behaviors()
+	{
+		return [
+			'robotsFilter' => RobotsFilter::class,
+		];
+	}
+	
     /**
      * Initializer
      * @todo use getter exception inside module attribute instead of initializer of controller.
@@ -82,10 +90,6 @@ class DefaultController extends Controller
         $model = $this->generateModelFromModule();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ((intval(time()) - intval(Yii::$app->session->get('renderTime', 0))) < $this->module->spamDetectionDelay) {
-                throw new Exception("We haved catched a spam contact form with the values: " . print_r($model->attributes, true));
-            }
-
             $merge_vars = null;
             foreach ($model->attributes as $key => $value) {
                 if ($key != $this->module->attributeEmailField) {
@@ -126,8 +130,6 @@ class DefaultController extends Controller
                 return $this->refresh();
             }
         }
-
-        Yii::$app->session->set('renderTime', time());
         
         return $this->render('index', [
             'model' => $model,

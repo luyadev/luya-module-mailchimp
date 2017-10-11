@@ -5,6 +5,7 @@ namespace luyadev\mailchimp\tests;
 use Yii;
 use luya\testsuite\cases\WebApplicationTestCase;
 use luya\mailchimp\helpers\MailchimpHelper;
+use luya\mailchimp\controllers\DefaultController;
 
 class MailchimpTest extends WebApplicationTestCase
 {
@@ -27,6 +28,12 @@ class MailchimpTest extends WebApplicationTestCase
         $this->assertInstanceOf('luya\mailchimp\Module', $this->app->getModule('mailchimp'));
     }
     
+    public function testModuleInstanceExceptionsFromController()
+    {
+    	$this->expectException('luya\Exception');
+    	new DefaultController('default', $this->app->getModule('mailchimp'));
+    }
+    
     public function testMailchimpHelper()
     {
         $mailchimp = new MailchimpHelper('#unknown');
@@ -39,5 +46,17 @@ class MailchimpTest extends WebApplicationTestCase
         $mailchimp = new MailchimpHelper(Yii::$app->params['apiKey']);
         $response = $mailchimp->subscribe(Yii::$app->params['listId'], 'basil+'.time().'@nadar.io');
         $this->assertNotFalse($response);
+    }
+
+    public function testRobotsSpamDelay()
+    {
+    	$module = $this->app->getModule('mailchimp');
+    	$module->listId = '123';
+    	$module->mailchimpApi = '123';
+    	$module->attributes = ['foo' => 'bar'];
+    	
+    	$_SERVER['REQUEST_METHOD'] = 'post';
+    	$this->expectException('yii\base\InvalidCallException');
+    	(new DefaultController('default', $module))->runAction('index');
     }
 }
