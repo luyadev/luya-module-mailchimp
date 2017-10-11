@@ -63,11 +63,13 @@ Create two view files in your module name directory in your views folder: `_mail
 Define your email confirmation admin mail in this view. If you've left `recipient` empty, no confirmation mail will be sent and you can skip the view definition.
 
 ```php
-<h2><?= Yii::$app->siteTitle;?> Newsletter registration</h2>
-<p>Date: <?= date("d.m.Y H:i"); ?></p>
+<h2><?= Yii::$app->siteTitle;?> Newsletter Registration</h2>
 <table border="0" cellpadding="5" cellspacing="2" width="100%">
 <?php foreach($model->getAttributes() as $key => $value): ?>
-    <tr><td width="150" style="border-bottom:1px solid #F0F0F0"><?= $model->getAttributeLabel($key); ?>:</td><td style="border-bottom:1px solid #F0F0F0"><?= nl2br($value); ?></td>
+    <tr>
+        <td><b><?= $model->getAttributeLabel($key); ?>:</b></td>
+        <td><?= nl2br($value); ?></td>
+    </tr>
 <?php endforeach; ?>
 </table>
 ```
