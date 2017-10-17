@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/luyadev/luya/master/docs/internals/images/luya_logo_rc4.png" alt="LUYA Logo"/>
 </p>
 
-# LUYA MAILCHIMP REGISTRATION FORM MODULE
+# LUYA MAILCHIMP MODULE
 
 [![LUYA](https://img.shields.io/badge/Powered%20by-LUYA-brightgreen.svg)](https://luya.io)
 [![Total Downloads](https://poser.pugx.org/luyadev/luya-module-mailchimp/downloads)](https://packagist.org/packages/luyadev/luya-module-mailchimp)
