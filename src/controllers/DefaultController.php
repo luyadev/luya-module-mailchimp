@@ -11,6 +11,12 @@ use \Mailchimp;
 use luya\mailchimp\helpers\MailchimpHelper;
 use luya\web\filters\RobotsFilter;
 
+/**
+ * Default Controller.
+ * 
+ * @author Basil Suter <basil@nadar.io>
+ * @since 1.0.0
+ */
 class DefaultController extends Controller
 {
     public function behaviors()

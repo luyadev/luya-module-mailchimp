@@ -35,8 +35,9 @@ use Yii;
  * ],
  * ```
  *
- * @author martinpetrasch
- * @since 1.0.0-beta6
+ * @author Martin Petrasch <martin.petrasch@zephir.ch>
+ * @author Basil Suter <basil@nadar.io>
+ * @since 1.0.0
  */
 class Module extends \luya\base\Module
 {
