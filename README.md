@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/luyadev/luya/master/docs/internals/images/luya_logo_rc4.png" alt="LUYA Logo"/>
+</p>
+
 # LUYA MAILCHIMP REGISTRATION FORM MODULE
 
 [![LUYA](https://img.shields.io/badge/Powered%20by-LUYA-brightgreen.svg)](https://luya.io)
@@ -6,6 +10,8 @@
 [![Join the chat at https://gitter.im/luyadev/luya](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/luyadev/luya)
 
 This module provides a simple way to build your own form for a user registration in a MailChimp newsletter.
+
+> ATTENTION: Changed the application structure and namespaces of the application, use `luya\mailchimp\Module` instead of `mailchimp\Module`.
 
 ## Preparation
 
