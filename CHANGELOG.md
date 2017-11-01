@@ -3,8 +3,10 @@ LUYA MODULE MAILCHIMP CHANGELOG
 
 All notable changes to this project will be documented in this file. This project make usage of the [Yii Versioning Strategy](https://github.com/yiisoft/yii2/blob/master/docs/internals/versions.md).
 
-1.0.2 (in progress)
+1.0.2 (1. November 2017)
 -------------------
+
+- [#8](https://github.com/luyadev/luya-module-mailchimp/issues/8) Provide an option to disable the robots filtering.
 
 1.0.1 (17. October 2017)
 -------------------

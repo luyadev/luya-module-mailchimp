@@ -59,4 +59,18 @@ class MailchimpTest extends WebApplicationTestCase
         $this->expectException('yii\base\InvalidCallException');
         (new DefaultController('default', $module))->runAction('index');
     }
+    
+    public function testRobotsSpamDelayDisabled()
+    {
+        $module = $this->app->getModule('mailchimp');
+        $module->robotsFilterDelay = false;
+        $module->listId = '123';
+        $module->mailchimpApi = '123';
+        $module->attributes = ['foo' => 'bar'];
+        
+        $ctrl = (new DefaultController('default', $module));
+        $behaviors = $ctrl->behaviors();
+        
+        $this->assertEmpty($behaviors);
+    }
 }

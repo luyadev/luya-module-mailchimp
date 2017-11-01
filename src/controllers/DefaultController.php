@@ -13,7 +13,7 @@ use luya\web\filters\RobotsFilter;
 
 /**
  * Default Controller.
- * 
+ *
  * @author Basil Suter <basil@nadar.io>
  * @since 1.0.0
  */
@@ -21,9 +21,16 @@ class DefaultController extends Controller
 {
     public function behaviors()
     {
-        return [
-            'robotsFilter' => RobotsFilter::class,
-        ];
+        $behaviors = parent::behaviors();
+        
+        if ($this->module->robotsFilterDelay !== false) {
+            $behaviors['robotsFilter'] = [
+                'class' => RobotsFilter::class,
+                'delay' => $this->module->robotsFilterDelay,
+            ];
+        }
+        
+        return $behaviors;
     }
     
     /**

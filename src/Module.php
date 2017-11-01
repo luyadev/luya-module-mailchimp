@@ -66,13 +66,6 @@ class Module extends \luya\base\Module
      * [[\luya\components\Mail::addresses()]] method of the mailer function.
      */
     public $recipients;
-
-    /**
-     * @var int Number in seconds, if the process time is faster then `$spamDetectionDelay`, the mail will threated as spam
-     * and throws an exception. As humans requires at least more then 2 seconds to fillup a form we use this as base value.
-     */
-    public $spamDetectionDelay = 2;
-
     /**
      * @var string MailChimp API key. You'll find more info how to make or retrieve an API key here: http://kb.mailchimp.com/accounts/management/about-api-keys
      */
@@ -134,4 +127,10 @@ class Module extends \luya\base\Module
      * ```
      */
     public $groups = [];
+
+    /**
+     * @var boolean Whether robots filtering is enabled or not, if provided this is the time of seconds a visitor must enter data on the
+     * page, if the time is lower then given time, an exception is thrown. If value is false, the robots filter behavior is disabled.
+     */
+    public $robotsFilterDelay = 2.5;
 }
