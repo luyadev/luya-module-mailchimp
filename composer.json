@@ -1,5 +1,4 @@
 {
-    "minimum-stability" : "RC",
     "name" : "luyadev/luya-module-mailchimp",
     "description" : "This module provides a simple way to build your own form for a user registration in a MailChimp newsletter.",
     "type" : "luya-module",
@@ -25,8 +24,7 @@
         "mailchimp/mailchimp": "^2.0"
     },
     "require-dev" : {
-        "luyadev/luya-core" : "1.0.0-RC4",
-        "luyadev/luya-testsuite":"~1.0.0"
+        "luyadev/luya-testsuite":"~1.1.0"
     },
     "autoload" : {
         "psr-4" : {
