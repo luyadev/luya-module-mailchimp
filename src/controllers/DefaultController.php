@@ -113,11 +113,9 @@ class DefaultController extends Controller
             // add interest groups
             foreach ($this->module->groups as $group) {
                 $merge_vars['groupings'][] = [
-                    [
-                        'id' => $group['id'],
-                        'groups' => $this->getGroupAttributes($model, $group['alias'])
-                    ]
-                ];
+                                                'id' => $group['id'],
+                                                'groups' => $this->getGroupAttributes($model, $group['alias'])
+                                             ];
             }
 
             $mailchimp = new MailchimpHelper($this->module->mailchimpApi);
