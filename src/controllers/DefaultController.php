@@ -119,6 +119,8 @@ class DefaultController extends Controller
             }
 
             $mailchimp = new MailchimpHelper($this->module->mailchimpApi);
+            $mailchimp->doubleOptin = $this->module->doubleOptin;
+            
             if (!$mailchimp->subscribe($this->module->listId, $model->{$this->module->attributeEmailField}, $merge_vars)) {
                 $model->addError($this->module->attributeEmailField, $mailchimp->errorMessage);
             }

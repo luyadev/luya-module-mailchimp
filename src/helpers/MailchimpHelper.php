@@ -39,6 +39,30 @@ class MailchimpHelper extends Object
     public $mailchimp;
     
     /**
+     * @var boolean
+     * @since 1.0.4
+     */
+    public $doubleOptin = false;
+    
+    /**
+     * @var boolean
+     * @since 1.0.4
+     */
+    public $updateExisting = false;
+    
+    /**
+     * @var boolean
+     * @since 1.0.4
+     */
+    public $replaceInterests = false;
+    
+    /**
+     * @var boolean
+     * @since 1.0.4
+     */
+    public $sendWelcome = false;
+    
+    /**
      *
      * @param string $apiKey
      * @param array $config
@@ -62,7 +86,13 @@ class MailchimpHelper extends Object
     public function subscribe($listId, $email, array $mergedVars = [], array $options = [])
     {
         try {
-            return $this->mailchimp->lists->subscribe($listId, ['email' => $email], $mergedVars, false, false, false, false);
+            // description of subscribe properties:
+            // subscribe($id, $email, $merge_vars=null, $email_type='html', $double_optin=true, $update_existing=false, $replace_interests=true, $send_welcome=false)
+            
+            return $this->mailchimp->lists->subscribe($listId, [
+                'email' => $email,
+            ], $mergedVars, 'html', $this->doubleOptin, $this->updateExisting, $this->replaceInterests, $this->sendWelcome);
+            
         } catch (\Exception $e) {
             return $this->setErrorMessage($e);
         }

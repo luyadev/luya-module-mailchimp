@@ -77,6 +77,12 @@ class Module extends \luya\base\Module
     public $listId;
 
     /**
+     * @var boolean
+     * @since 1.0.4
+     */
+    public $doubleOptin = false;
+    
+    /**
      * @var array An array containing all the attributes for this model
      *
      * ```php
