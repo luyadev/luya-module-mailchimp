@@ -103,6 +103,16 @@ use yii\helpers\Html;
 <?php endif; ?>
 ```
 
+## Send current language
+
+To let Mailchimp know what language the visitor is using, add the field `mc_language` to `attributes` and create a `safe` rule for it (or add it to the `require` rule).
+
+In the view file, add the following line:
+
+```php
+<?= $form->field($model, 'mc_language')->hiddenInput(['value'=> Yii::$app->composition->langShortCode])->label(false) ?>
+```
+
 ## Embed the Module in the CMS
 
 Add a new module page and choose your configured mailchimp-module-name. In the config example above we used *newsletter-form*. Make sure the site is visible and online and you're ready to use the module to register users via your defined custom forms to your mailchimp newsletter list.
