@@ -3,7 +3,7 @@
 namespace luya\mailchimp\helpers;
 
 use Mailchimp;
-use yii\base\Object;
+use yii\base\BaseObject;
 
 /**
  * Mailchimp Helper.
@@ -24,7 +24,7 @@ use yii\base\Object;
  * @author Basil Suter <basil@nadar.io>
  * @since 1.0.1
  */
-class MailchimpHelper extends Object
+class MailchimpHelper extends BaseObject
 {
     /**
      * @var array List of arrays an the translations (https://apidocs.mailchimp.com/api/1.3/exceptions.field.php)

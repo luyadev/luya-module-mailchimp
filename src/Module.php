@@ -138,5 +138,5 @@ class Module extends \luya\base\Module
      * @var boolean Whether robots filtering is enabled or not, if provided this is the time of seconds a visitor must enter data on the
      * page, if the time is lower then given time, an exception is thrown. If value is false, the robots filter behavior is disabled.
      */
-    public $robotsFilterDelay = 2.5;
+    public $robotsFilterDelay = 1.5;
 }

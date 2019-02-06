@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. This project make usage of the [Yii Versioning Strategy](https://github.com/yiisoft/yii2/blob/master/docs/internals/versions.md).
 
+## 1.0.5 (6. February 2019)
+
++ [#12](https://github.com/luyadev/luya-module-mailchimp/issues/12) Use BaseObject instead of Object in order to ensure PHP7 compatibility.
+
 ## 1.0.4 (1. June 2018)
 
 + [#10](https://github.com/luyadev/luya-module-mailchimp/issues/10) Add option for double opt in.
