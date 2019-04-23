@@ -20,7 +20,7 @@ Before you install and configure the module you've to setup you Mailchimp accoun
 Require the mailchimp module via composer
 
 ```sh
-composer require luyadev/luya-module-mailchimp:~1.0.0
+composer require luyadev/luya-module-mailchimp
 ```
 
 add the mailchimp form module to your config:
