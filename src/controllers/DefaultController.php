@@ -7,7 +7,6 @@ use luya\base\DynamicModel;
 use yii\base\InvalidConfigException;
 use luya\Exception;
 use luya\web\Controller;
-use \Mailchimp;
 use luya\mailchimp\helpers\MailchimpHelper;
 use luya\web\filters\RobotsFilter;
 
