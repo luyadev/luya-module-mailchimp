@@ -92,7 +92,6 @@ class MailchimpHelper extends BaseObject
             return $this->mailchimp->lists->subscribe($listId, [
                 'email' => $email,
             ], $mergedVars, 'html', $this->doubleOptin, $this->updateExisting, $this->replaceInterests, $this->sendWelcome);
-            
         } catch (\Exception $e) {
             return $this->setErrorMessage($e);
         }
