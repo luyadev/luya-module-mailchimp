@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 In order to read more about upgrading and BC breaks have a look at the [UPGRADE Document](UPGRADE.md).
 
+## 1.0.6 (9. December 2021)
+
++ Small changes in docs, translations, composer dependencies
+
 ## 1.0.5 (6. February 2019)
 
 + [#12](https://github.com/luyadev/luya-module-mailchimp/issues/12) Use BaseObject instead of Object in order to ensure PHP7 compatibility.
