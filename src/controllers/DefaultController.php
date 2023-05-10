@@ -8,6 +8,7 @@ use yii\base\InvalidConfigException;
 use luya\Exception;
 use luya\web\Controller;
 use luya\mailchimp\helpers\MailchimpHelper;
+use luya\mailchimp\Module;
 use luya\web\filters\RobotsFilter;
 
 /**
@@ -15,6 +16,7 @@ use luya\web\filters\RobotsFilter;
  *
  * @author Basil Suter <basil@nadar.io>
  * @since 1.0.0
+ * @property Module $module
  */
 class DefaultController extends Controller
 {
@@ -117,7 +119,7 @@ class DefaultController extends Controller
                 ];
             }
 
-            $mailchimp = new MailchimpHelper($this->module->mailchimpApi);
+            $mailchimp = new MailchimpHelper($this->module->mailchimpApi, $this->module->server);
             $mailchimp->doubleOptin = $this->module->doubleOptin;
             
             if (!$mailchimp->subscribe($this->module->listId, $model->{$this->module->attributeEmailField}, $merge_vars)) {

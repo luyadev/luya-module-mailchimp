@@ -71,6 +71,8 @@ class Module extends \luya\base\Module
      */
     public $mailchimpApi;
 
+    public $server;
+
     /**
      * @var Number MailChimp newsletter list Id.
      */
