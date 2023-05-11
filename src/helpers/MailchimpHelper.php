@@ -3,6 +3,8 @@
 namespace luya\mailchimp\helpers;
 
 use Mailchimp;
+use MailchimpMarketing\Api\ListsApi;
+use MailchimpMarketing\ApiClient;
 use yii\base\BaseObject;
 
 /**
@@ -45,31 +47,17 @@ class MailchimpHelper extends BaseObject
     public $doubleOptin = false;
     
     /**
-     * @var boolean
-     * @since 1.0.4
-     */
-    public $updateExisting = false;
-    
-    /**
-     * @var boolean
-     * @since 1.0.4
-     */
-    public $replaceInterests = false;
-    
-    /**
-     * @var boolean
-     * @since 1.0.4
-     */
-    public $sendWelcome = false;
-    
-    /**
      *
      * @param string $apiKey
      * @param array $config
      */
-    public function __construct($apiKey, array $config = [])
+    public function __construct($apiKey, $server, array $config = [])
     {
-        $this->mailchimp = new \Mailchimp($apiKey);
+        $this->mailchimp = new ApiClient();
+        $this->mailchimp->setConfig([
+            'apiKey' => $apiKey,
+            'server' => $server, // us19 f.e
+        ]);
         
         parent::__construct($config);
     }
@@ -79,19 +67,23 @@ class MailchimpHelper extends BaseObject
      *
      * @param string $listId
      * @param string $email
-     * @param array $mergedVars
-     * @param array $options
+     * @param array $options An option would be:
+     * - interests:
+     * - language
+     * @param array $mergeFields
      * @return boolean|mixed
+     * @see https://mailchimp.com/developer/marketing/api/list-members/add-member-to-list/
      */
-    public function subscribe($listId, $email, array $mergedVars = [], array $options = [])
+    public function subscribe($listId, $email, array $options = [], array $mergeFields = [])
     {
         try {
-            // description of subscribe properties:
-            // subscribe($id, $email, $merge_vars=null, $email_type='html', $double_optin=true, $update_existing=false, $replace_interests=true, $send_welcome=false)
-            
-            return $this->mailchimp->lists->subscribe($listId, [
-                'email' => $email,
-            ], $mergedVars, 'html', $this->doubleOptin, $this->updateExisting, $this->replaceInterests, $this->sendWelcome);
+            // https://mailchimp.com/developer/marketing/api/list-members/add-member-to-list/
+            $this->mailchimp->lists->addListMember($listId, array_filter(array_merge([
+                'email_address' => $email,
+                'status' => $this->doubleOptin ? 'pending' : 'subscribed', // "subscribed", "unsubscribed", "cleaned", "pending", or "transactional".
+                'email_type' => 'html',
+                'merge_fields' => $mergeFields,
+            ], $options)));
         } catch (\Exception $e) {
             return $this->setErrorMessage($e);
         }
