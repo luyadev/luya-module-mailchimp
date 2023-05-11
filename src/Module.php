@@ -94,6 +94,12 @@ class Module extends \luya\base\Module
     public $attributes;
 
     /**
+     * @var array Mailchimp options like:
+     * - language: de
+     */
+    public $options = [];
+
+    /**
      * @var string Defines the name of the attribute in the model which containts the email adresse in order to make the mailchimp call and also to assign the errors.
      */
     public $attributeEmailField = 'email';
@@ -121,20 +127,6 @@ class Module extends \luya\base\Module
      * ```
      */
     public $attributeLabels = [];
-
-    /**
-     * @var array Group fields defined in your mailchimp list. Contains an array with an alias for model validation, the id for mailchimp API submit. The included fields will be defined in your form view.
-     *
-     * ```php
-     * 'groups' => [
-     *  [
-     *   'alias' => 'language',
-     *   'id' => '2809',
-     *  ],
-     * ],
-     * ```
-     */
-    public $groups = [];
 
     /**
      * @var boolean Whether robots filtering is enabled or not, if provided this is the time of seconds a visitor must enter data on the

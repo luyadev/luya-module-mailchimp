@@ -111,18 +111,10 @@ class DefaultController extends Controller
                 }
             }
 
-            // add interest groups
-            foreach ($this->module->groups as $group) {
-                $merge_vars['groupings'][] = [
-                    'id' => $group['id'],
-                    'groups' => $this->getGroupAttributes($model, $group['alias'])
-                ];
-            }
-
             $mailchimp = new MailchimpHelper($this->module->mailchimpApi, $this->module->server);
             $mailchimp->doubleOptin = $this->module->doubleOptin;
             
-            if (!$mailchimp->subscribe($this->module->listId, $model->{$this->module->attributeEmailField}, $merge_vars)) {
+            if (!$mailchimp->subscribe($this->module->listId, $model->{$this->module->attributeEmailField}, $this->module->options, $merge_vars)) {
                 $model->addError($this->module->attributeEmailField, $mailchimp->errorMessage);
             }
             
