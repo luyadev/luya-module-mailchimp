@@ -2,6 +2,7 @@
 
 namespace luya\mailchimp;
 
+use Closure;
 use luya\Exception;
 use Yii;
 
@@ -86,6 +87,13 @@ class Module extends \luya\base\Module
      * @since 1.0.4
      */
     public $doubleOptin = false;
+
+    /**
+     * @var array The attribute names which should be passed to merge fields if using the default controller implementation.
+     * @since 2.0.1
+     */
+    public $mergeFieldAttributes = [];
+
     
     /**
      * @var array An array containing all the attributes for this model
@@ -97,8 +105,10 @@ class Module extends \luya\base\Module
     public $attributes;
 
     /**
-     * @var array Mailchimp options like:
+     * @var array|Closure Mailchimp options like:
      * - language: de
+     * 
+     * If a closure is given, an array with options must be returned, the closue arguments is the model.
      */
     public $options = [];
 

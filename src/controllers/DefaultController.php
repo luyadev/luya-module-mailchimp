@@ -2,6 +2,7 @@
 
 namespace luya\mailchimp\controllers;
 
+use Closure;
 use Yii;
 use luya\base\DynamicModel;
 use yii\base\InvalidConfigException;
@@ -111,13 +112,19 @@ class DefaultController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $merge_vars = null;
             foreach ($model->attributes as $key => $value) {
-                if ($key != $this->module->attributeEmailField) {
+                if ($key != $this->module->attributeEmailField && in_array($key, $this->module->mergeFieldAttributes)) {
                     $merge_vars[$key] = $value;
                 }
             }
 
             $mailchimp = new MailchimpHelper($this->module->mailchimpApi, $this->module->server);
             $mailchimp->doubleOptin = $this->module->doubleOptin;
+
+            $options = $this->module->options;
+
+            if ($options instanceof Closure) {
+                $options = call_user_func($options, $model);
+            }
             
             if (!$mailchimp->subscribe($this->module->listId, $model->{$this->module->attributeEmailField}, $this->module->options, $merge_vars)) {
                 $model->addError($this->module->attributeEmailField, 'Error while subscribing, maybe the user is already subscribed.');
