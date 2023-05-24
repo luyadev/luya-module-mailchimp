@@ -80,14 +80,13 @@ class MailchimpHelper extends BaseObject
             // https://mailchimp.com/developer/marketing/api/list-members/add-member-to-list/
             /** @var ListsApi $lists */
             $lists = $this->mailchimp->lists;
-            $r = $lists->addListMemberWithHttpInfo($listId, array_filter(array_merge([
+            return $lists->addListMember($listId, array_filter(array_merge([
                 'email_address' => $email,
                 'status' => $this->doubleOptin ? 'pending' : 'subscribed', // "subscribed", "unsubscribed", "cleaned", "pending", or "transactional".
                 'email_type' => 'html',
                 'merge_fields' => $mergeFields,
             ], $options)));
 
-            Yii::debug($r, __METHOD__);
         } catch (\Exception $e) {
             Yii::error($e->getMessage(), __METHOD__);
             return $this->setErrorMessage($e);
