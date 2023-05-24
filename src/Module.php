@@ -113,6 +113,14 @@ class Module extends \luya\base\Module
     public $options = [];
 
     /**
+     * @var array|Closure Mailchimp interests:
+     * - language: de
+     * 
+     * If a closure is given, an array with options must be returned, the closue arguments is the model.
+     */
+    public $interests = [];
+
+    /**
      * @var string Defines the name of the attribute in the model which containts the email adresse in order to make the mailchimp call and also to assign the errors.
      */
     public $attributeEmailField = 'email';

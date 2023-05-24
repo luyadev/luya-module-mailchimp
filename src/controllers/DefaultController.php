@@ -121,12 +121,16 @@ class DefaultController extends Controller
             $mailchimp->doubleOptin = $this->module->doubleOptin;
 
             $options = $this->module->options;
-
             if ($options instanceof Closure) {
                 $options = call_user_func($options, $model);
             }
+
+            $interests = $this->module->interests;
+            if ($interests instanceof Closure) {
+                $interests = call_user_func($interests, $model);
+            }
             
-            if (!$mailchimp->subscribe($this->module->listId, $model->{$this->module->attributeEmailField}, $options, $merge_vars)) {
+            if (!$mailchimp->subscribe($this->module->listId, $model->{$this->module->attributeEmailField}, $options, $merge_vars, $interests)) {
                 $model->addError($this->module->attributeEmailField, 'Error while subscribing, maybe the user is already subscribed.');
             }
             

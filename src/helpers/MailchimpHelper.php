@@ -71,10 +71,11 @@ class MailchimpHelper extends BaseObject
      * - interests:
      * - language
      * @param array $mergeFields
+     * @param array $interests ['123123' => true], wheere 123123 is the interest/group attribute id.
      * @return boolean|mixed
      * @see https://mailchimp.com/developer/marketing/api/list-members/add-member-to-list/
      */
-    public function subscribe($listId, $email, array $options = [], array $mergeFields = [])
+    public function subscribe($listId, $email, array $options = [], array $mergeFields = [], array $interests = [])
     {
         try {
             // https://mailchimp.com/developer/marketing/api/list-members/add-member-to-list/
@@ -85,6 +86,7 @@ class MailchimpHelper extends BaseObject
                 'status' => $this->doubleOptin ? 'pending' : 'subscribed', // "subscribed", "unsubscribed", "cleaned", "pending", or "transactional".
                 'email_type' => 'html',
                 'merge_fields' => $mergeFields,
+                'interests' => $interests,
             ], $options)));
 
         } catch (\Exception $e) {
