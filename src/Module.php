@@ -71,6 +71,9 @@ class Module extends \luya\base\Module
      */
     public $mailchimpApi;
 
+    /**
+     * @var string The mailchimp server region, example `us19`
+     */
     public $server;
 
     /**

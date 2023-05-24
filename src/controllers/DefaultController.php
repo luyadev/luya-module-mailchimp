@@ -80,7 +80,12 @@ class DefaultController extends Controller
     private function generateModelFromModule()
     {
         $model = new DynamicModel($this->module->attributes);
-        $model->attributeLabels = $this->module->attributeLabels;
+
+        $labels = [];
+        foreach ($this->module->attributeLabels as $key => $label) {
+            $labels[$key] = is_array($label) ? Yii::t($label[0], $label[1]) : $label;
+        }
+        $model->attributeLabels = $labels;
         
         foreach ($this->module->rules as $rule) {
             if (is_array($rule) && isset($rule[0], $rule[1])) {
