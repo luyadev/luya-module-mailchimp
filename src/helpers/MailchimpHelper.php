@@ -2,9 +2,8 @@
 
 namespace luya\mailchimp\helpers;
 
-use Mailchimp;
-use MailchimpMarketing\Api\ListsApi;
 use MailchimpMarketing\ApiClient;
+use Yii;
 use yii\base\BaseObject;
 
 /**
@@ -36,7 +35,7 @@ class MailchimpHelper extends BaseObject
     ];
     
     /**
-     * @var Mailchimp;
+     * @var ApiClient;
      */
     public $mailchimp;
     
@@ -85,6 +84,7 @@ class MailchimpHelper extends BaseObject
                 'merge_fields' => $mergeFields,
             ], $options)));
         } catch (\Exception $e) {
+            Yii::debug($e->getMessage(), __METHOD__);
             return $this->setErrorMessage($e);
         }
     }
