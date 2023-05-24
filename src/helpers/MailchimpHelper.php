@@ -71,7 +71,7 @@ class MailchimpHelper extends BaseObject
      * - interests:
      * - language
      * @param array $mergeFields
-     * @param array $interests ['123123' => true], wheere 123123 is the interest/group attribute id.
+     * @param array $interests ['123123' => true], wheere 123123 is the interest/group attribute id. In order to find the id use the api: https://<SERVER>.api.mailchimp.com/3.0/lists/<LISTID>/interest-categories
      * @return boolean|mixed
      * @see https://mailchimp.com/developer/marketing/api/list-members/add-member-to-list/
      */

@@ -114,7 +114,7 @@ class Module extends \luya\base\Module
 
     /**
      * @var array|Closure Mailchimp interests:
-     * - language: de
+     * - ID: true
      * 
      * If a closure is given, an array with options must be returned, the closue arguments is the model.
      */
