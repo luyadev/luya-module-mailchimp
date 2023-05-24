@@ -2,6 +2,7 @@
 
 namespace luya\mailchimp\helpers;
 
+use MailchimpMarketing\Api\ListsApi;
 use MailchimpMarketing\ApiClient;
 use Yii;
 use yii\base\BaseObject;
@@ -77,14 +78,18 @@ class MailchimpHelper extends BaseObject
     {
         try {
             // https://mailchimp.com/developer/marketing/api/list-members/add-member-to-list/
-            $this->mailchimp->lists->addListMember($listId, array_filter(array_merge([
+            /** @var ListsApi $lists */
+            $lists = $this->mailchimp->lists;
+            $r = $lists->addListMemberWithHttpInfo($listId, array_filter(array_merge([
                 'email_address' => $email,
                 'status' => $this->doubleOptin ? 'pending' : 'subscribed', // "subscribed", "unsubscribed", "cleaned", "pending", or "transactional".
                 'email_type' => 'html',
                 'merge_fields' => $mergeFields,
             ], $options)));
+
+            Yii::debug($r, __METHOD__);
         } catch (\Exception $e) {
-            Yii::debug($e->getMessage(), __METHOD__);
+            Yii::error($e->getMessage(), __METHOD__);
             return $this->setErrorMessage($e);
         }
     }
