@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 In order to read more about upgrading and BC breaks have a look at the [UPGRADE Document](UPGRADE.md).
 
+## 3.0.0 (3. January 2024)
+
++ Drop support for PHP 8.1 and below.
+
 ## 2.1.0 (24. May 2023)
 
 + Do not make error while saving so verbose.
