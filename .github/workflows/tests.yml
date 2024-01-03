@@ -28,7 +28,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: curl, intl, mbstring
-          ini-values: date.timezone='UTC'
+          ini-values: date.timezone='UTC',error_reporting=E_ALL,display_errors=On
           coverage: xdebug
 
       ## install composer
