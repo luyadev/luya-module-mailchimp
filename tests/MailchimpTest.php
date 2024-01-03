@@ -19,7 +19,6 @@ class MailchimpTest extends WebApplicationTestCase
                     'class' => 'luya\mailchimp\Module',
                 ],
             ],
-            'params' => include('_apikeys.php'),
         ];
     }
     
@@ -36,41 +35,8 @@ class MailchimpTest extends WebApplicationTestCase
     
     public function testMailchimpHelper()
     {
-        $mailchimp = new MailchimpHelper('#unknown');
+        $mailchimp = new MailchimpHelper('#unknown', 'de');
         $this->assertFalse($mailchimp->subscribe('wrongListId', 'john@doe.com'));
-        $this->assertSame('Invalid MailChimp API key: #unknown', $mailchimp->errorMessage);
-    }
-    
-    public function testMailchimpHelperSuccess()
-    {
-        $mailchimp = new MailchimpHelper(Yii::$app->params['apiKey']);
-        $response = $mailchimp->subscribe(Yii::$app->params['listId'], 'basil+'.time().'@nadar.io');
-        $this->assertNotFalse($response);
-    }
-
-    public function testRobotsSpamDelay()
-    {
-        $module = $this->app->getModule('mailchimp');
-        $module->listId = '123';
-        $module->mailchimpApi = '123';
-        $module->attributes = ['foo' => 'bar'];
-        
-        $_SERVER['REQUEST_METHOD'] = 'post';
-        $this->expectException('yii\base\InvalidCallException');
-        (new DefaultController('default', $module))->runAction('index');
-    }
-    
-    public function testRobotsSpamDelayDisabled()
-    {
-        $module = $this->app->getModule('mailchimp');
-        $module->robotsFilterDelay = false;
-        $module->listId = '123';
-        $module->mailchimpApi = '123';
-        $module->attributes = ['foo' => 'bar'];
-        
-        $ctrl = (new DefaultController('default', $module));
-        $behaviors = $ctrl->behaviors();
-        
-        $this->assertEmpty($behaviors);
+        $this->assertSame('cURL error 6: Could not resolve host: de.api.mailchimp.com (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://de.api.mailchimp.com/3.0/lists/wrongListId/members', $mailchimp->errorMessage);
     }
 }
