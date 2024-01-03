@@ -33,7 +33,7 @@
         "issues": "https://github.com/luyadev/luya/issues"
     },
     "require": {
-        "mailchimp/marketing": "^3.0"
+        "luyadev/mailchimp-marketing-php": "^1.0"
     },
     "require-dev": {
         "luyadev/luya-testsuite": "^3.0",

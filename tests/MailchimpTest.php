@@ -42,9 +42,4 @@ class MailchimpTest extends WebApplicationTestCase
         $this->assertFalse($mailchimp->subscribe('wrongListId', 'john@doe.com'));
         $this->assertSame('cURL error 6: Could not resolve host: de.api.mailchimp.com (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://de.api.mailchimp.com/3.0/lists/wrongListId/members', $mailchimp->errorMessage);
     }
-
-    public function testConfigPhp82()
-    {
-
-    }
 }
